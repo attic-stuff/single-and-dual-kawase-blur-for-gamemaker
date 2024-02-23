@@ -15,6 +15,6 @@ all blurring works the same way: the current pixel's color is based on the avera
 
 so there is the kawase blur! its method of getting the average color begins by turning on hardware filtering, which does a tiny bit of blurring the source texture. then for each pixel, the corners of four neighboring pixels are sampled. since the sample is taken in the corner, and hardware filtering is enabled, this is the same as sampling four pixels in one [spot](https://en.wikipedia.org/wiki/Four_Corners). by using this trick, the blur is made by turning the color of the current pixel into the average color its sixteen neighbors. by doing this across multiple passes, which is called ping-ponging, you can spread the blur out to make it nice and blurry without blocky artifacts. i made this gif to illustrate how it works:
 
-
+![how this works](https://github.com/attic-stuff/single-and-dual-kawase-blur-for-gamemaker/blob/master/kawaseblur.gif)
 
 it begins with a single pixel in a grid of pixels. the red square is our current pixel, and the eggshell squares are all the other pixels. in the first pass, the color at each blue dot is sampled, and since it is in the corner of each neighbor then the color of the red pixel becomes the average color of every pixel within the yellow area. then we move to the second pass, which samples four groups of pixels a little further out. so now the color of our red pixel is the average color of everything in yellow. on a third pass we move further out again, adding even more colors to our red pixel.
