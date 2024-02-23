@@ -1,0 +1,8 @@
+{
+  "FolderOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"singlefiltercontrol","order":3,"path":"objects/singlefiltercontrol/singlefiltercontrol.yy",},
+    {"name":"kawasesinglefilter","order":1,"path":"shaders/kawasesinglefilter/kawasesinglefilter.yy",},
+    {"name":"truck","order":2,"path":"sprites/truck/truck.yy",},
+  ],
+}
