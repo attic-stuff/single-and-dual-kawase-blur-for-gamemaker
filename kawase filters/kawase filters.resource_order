@@ -1,8 +1,12 @@
 {
   "FolderOrderSettings": [],
   "ResourceOrderSettings": [
-    {"name":"singlefiltercontrol","order":3,"path":"objects/singlefiltercontrol/singlefiltercontrol.yy",},
-    {"name":"kawasesinglefilter","order":1,"path":"shaders/kawasesinglefilter/kawasesinglefilter.yy",},
-    {"name":"truck","order":2,"path":"sprites/truck/truck.yy",},
+    {"name":"backend","order":7,"path":"scripts/backend/backend.yy",},
+    {"name":"singlefiltercontrol","order":2,"path":"objects/singlefiltercontrol/singlefiltercontrol.yy",},
+    {"name":"dualfiltercontrol","order":4,"path":"objects/dualfiltercontrol/dualfiltercontrol.yy",},
+    {"name":"kawasedualfilterup","order":5,"path":"shaders/kawasedualfilterup/kawasedualfilterup.yy",},
+    {"name":"kawasesinglefilter","order":3,"path":"shaders/kawasesinglefilter/kawasesinglefilter.yy",},
+    {"name":"kawasedualfilterdown","order":6,"path":"shaders/kawasedualfilterdown/kawasedualfilterdown.yy",},
+    {"name":"stage","order":1,"path":"rooms/stage/stage.yy",},
   ],
 }

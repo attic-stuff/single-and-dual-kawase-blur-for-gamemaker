@@ -18,9 +18,13 @@
     "IDEVersion": "2023.11.1.129",
   },
   "resources": [
+    {"id":{"name":"backend","path":"scripts/backend/backend.yy",},},
     {"id":{"name":"singlefiltercontrol","path":"objects/singlefiltercontrol/singlefiltercontrol.yy",},},
+    {"id":{"name":"dualfiltercontrol","path":"objects/dualfiltercontrol/dualfiltercontrol.yy",},},
+    {"id":{"name":"kawasedualfilterup","path":"shaders/kawasedualfilterup/kawasedualfilterup.yy",},},
     {"id":{"name":"kawasesinglefilter","path":"shaders/kawasesinglefilter/kawasesinglefilter.yy",},},
     {"id":{"name":"truck","path":"sprites/truck/truck.yy",},},
+    {"id":{"name":"kawasedualfilterdown","path":"shaders/kawasedualfilterdown/kawasedualfilterdown.yy",},},
     {"id":{"name":"stage","path":"rooms/stage/stage.yy",},},
   ],
   "RoomOrderNodes": [
