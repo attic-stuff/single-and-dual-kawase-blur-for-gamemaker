@@ -1,6 +1,6 @@
-window_set_size(1024, 1024);
+window_set_size(room_width, room_height);
 window_center();
 
-stack = array_create(8, -1);
+stack = array_create(4, -1);
 
-show_debug_overlay(true)
+show_debug_overlay(true);

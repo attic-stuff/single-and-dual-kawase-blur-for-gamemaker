@@ -1,7 +1,9 @@
 {
   "FolderOrderSettings": [],
   "ResourceOrderSettings": [
+    {"name":"newsingle","order":9,"path":"objects/newsingle/newsingle.yy",},
     {"name":"backend","order":7,"path":"scripts/backend/backend.yy",},
+    {"name":"background","order":8,"path":"sprites/background/background.yy",},
     {"name":"singlefiltercontrol","order":2,"path":"objects/singlefiltercontrol/singlefiltercontrol.yy",},
     {"name":"dualfiltercontrol","order":4,"path":"objects/dualfiltercontrol/dualfiltercontrol.yy",},
     {"name":"kawasedualfilterup","order":5,"path":"shaders/kawasedualfilterup/kawasedualfilterup.yy",},

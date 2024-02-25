@@ -2,16 +2,19 @@
 varying vec2 vv_texturecoordinate;
 varying vec4 vv_vertexcolor;
 
-uniform float offset;
+uniform float kernel;
+uniform vec2 texelsize;
 
 void main() {
+
+	vec2 offset = (0.5 + kernel) * texelsize;
 
 	vec3 color = vec3(0.0);
 	
 	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate - offset).rgb;
 	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate + offset).rgb;
-	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate + vec2(-offset, offset)).rgb;
-	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate + vec2(offset, -offset)).rgb;
+	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate + vec2(-offset.x, offset.y)).rgb;
+	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate + vec2(offset.x, -offset.y)).rgb;
 	
 	color = color * 0.25;
 	

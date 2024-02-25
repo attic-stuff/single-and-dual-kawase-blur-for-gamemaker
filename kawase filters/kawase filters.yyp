@@ -18,7 +18,9 @@
     "IDEVersion": "2023.11.1.129",
   },
   "resources": [
+    {"id":{"name":"newsingle","path":"objects/newsingle/newsingle.yy",},},
     {"id":{"name":"backend","path":"scripts/backend/backend.yy",},},
+    {"id":{"name":"background","path":"sprites/background/background.yy",},},
     {"id":{"name":"singlefiltercontrol","path":"objects/singlefiltercontrol/singlefiltercontrol.yy",},},
     {"id":{"name":"dualfiltercontrol","path":"objects/dualfiltercontrol/dualfiltercontrol.yy",},},
     {"id":{"name":"kawasedualfilterup","path":"shaders/kawasedualfilterup/kawasedualfilterup.yy",},},

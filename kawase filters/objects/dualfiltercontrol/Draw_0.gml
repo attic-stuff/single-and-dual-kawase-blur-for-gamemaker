@@ -1,13 +1,13 @@
 if (keyboard_check(vk_space) == false) {
-	for (var i = 0; i < 8; i++) {
+	for (var i = 0; i < array_length(stack); i++) {
 		if (surface_exists(stack[i]) == false) {
-			stack[i] = surface_create(256, 256);
+			stack[i] = surface_create(room_width, room_height);
 		}
 	}
 
 	gpu_set_tex_filter(true);
 
-	var texture = sprite_get_texture(truck, 0);
+	var texture = surface_get_texture(stack[0]);
 	var texelwidth = texture_get_texel_width(texture) * 0.5;
 	var texelheight = texture_get_texel_height(texture) * 0.5;
 
@@ -54,8 +54,8 @@ if (keyboard_check(vk_space) == false) {
 	gpu_set_tex_filter(false);
 
 	draw_self();
-	draw_surface_part(stack[7], mouse_x, 0, 256 - mouse_x, 256, mouse_x, 0);
-	draw_line_width_color(mouse_x, -1, mouse_x, 256, 2, #000000, #000000);
+	draw_surface_part(stack[array_length(stack) - 1], mouse_x, 0, room_width - mouse_x, room_width, mouse_x, 0);
+	draw_line_width_color(mouse_x, -1, mouse_x, room_width, 2, #000000, #000000);
 } else {
 	draw_self();
 }

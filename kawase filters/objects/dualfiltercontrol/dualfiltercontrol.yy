@@ -29,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "truck",
-    "path": "sprites/truck/truck.yy",
+    "name": "background",
+    "path": "sprites/background/background.yy",
   },
   "spriteMaskId": null,
   "visible": true,
