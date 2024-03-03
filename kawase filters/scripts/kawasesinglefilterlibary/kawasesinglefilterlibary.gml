@@ -1,51 +1,49 @@
-/*
-
-	- single filter kawase blur instructions
-
-		create ping surface and pong surface at half the size of your
-		content, whether that is a surface or a sprite
-		
-		turn on tex filter
-		
-		draw content to ping surface using the shader and kernel index 0
-		
-		draw ping surface to pong surface
-		draw pong surf
-
-
-*/
 enum kawase_single_filter_stack { contents, ping, pong };
 
-function kawase_single_filter_copy(stack, kernel) {
-	static kerneluniform = shader_get_uniform(kawasesinglefilter, "kernel");
-	static texeluniform = shader_get_uniform(kawasesinglefilter, "texelsize");
-	var contents = stack[kawase_single_filter_stack.contents];
+/**
+ * helper function to make a stack for the single filter kawase blur
+ */
+function kawase_single_filter_create_stack() {
+	return array_create(3, -1);	
+}
 
-	var width = surface_get_width(contents) * 0.5;
-	var height = surface_get_height(contents) * 0.5;
+/**
+ * begins the single filter kawase blur process
+ * @param {array} stack the stack of surfaces
+ */
+function kawase_single_filter_begin(stack) {
+	static distancesuniform = shader_get_uniform(kawasesinglefiltershader, "distances");
+	static texeluniform = shader_get_uniform(kawasesinglefiltershader, "texelsize");
+	var contents = stack[kawase_single_filter_stack.contents];
+	var width = surface_get_width(contents) div 2;
+	var height = surface_get_height(contents) div 2;
 	if (surface_exists(stack[kawase_single_filter_stack.ping]) == false) {
 		stack[kawase_single_filter_stack.ping] = surface_create(width, height);	
 	}
 	surface_set_target(stack[kawase_single_filter_stack.ping]) {
 		draw_clear_alpha(#000000, 0);
-		shader_set(kawasesinglefilter) {
-			shader_set_uniform_f(kerneluniform, kernel[0]);
+		shader_set(kawasesinglefiltershader) {
+			shader_set_uniform_f(distancesuniform, 0);
 			shader_set_uniform_f(texeluniform, 1 / width, 1 / height);
 			gpu_set_tex_filter(true);
-			draw_surface_ext(contents, 0, 0, 0.5, 0.5, 0, #ffffff, 1);
+			draw_surface_stretched(contents, 0, 0, width, height);
 			gpu_set_tex_filter(false);
 			shader_reset();	
 		}
 		surface_reset_target();
 	}
 }
-
-function kawase_single_filter_process(stack, kernel) {
-	static kerneluniform = shader_get_uniform(kawasesinglefilter, "kernel");
-	static texeluniform = shader_get_uniform(kawasesinglefilter, "texelsize");
+/**
+ * does the kawase blur series
+ * @param {array<Id.Surface>} stack the stack of surfaces
+ * @param {array<Real>} distances the array of distances for each pass
+ */
+function kawase_single_filter_process(stack, distances) {
+	static distancesuniform = shader_get_uniform(kawasesinglefiltershader, "distances");
+	static texeluniform = shader_get_uniform(kawasesinglefiltershader, "texelsize");
 	var contents = stack[kawase_single_filter_stack.contents];
-	var width = surface_get_width(contents) * 0.5;
-	var height = surface_get_height(contents) * 0.5;
+	var width = surface_get_width(contents) div 2;
+	var height = surface_get_height(contents) div 2;
 	if (surface_exists(stack[kawase_single_filter_stack.ping]) == false) {
 		stack[kawase_single_filter_stack.ping] = surface_create(width, height);	
 	}
@@ -53,11 +51,11 @@ function kawase_single_filter_process(stack, kernel) {
 		stack[kawase_single_filter_stack.pong] = surface_create(width, height);	
 	}
 	gpu_set_tex_filter(true);
-	for (var iteration = 1, repeats = array_length(kernel); iteration < repeats; iteration += 2) {
+	for (var iteration = 0, repeats = array_length(distances); iteration < repeats; iteration += 2) {
 		surface_set_target(stack[kawase_single_filter_stack.pong]) {
 			draw_clear_alpha(#000000, 0);
-			shader_set(kawasesinglefilter) {
-				shader_set_uniform_f(kerneluniform, kernel[iteration]);
+			shader_set(kawasesinglefiltershader) {
+				shader_set_uniform_f(distancesuniform, distances[iteration]);
 				shader_set_uniform_f(texeluniform, 1 / width, 1 / height);
 				draw_surface(stack[kawase_single_filter_stack.ping], 0, 0);
 				shader_reset();	
@@ -66,8 +64,8 @@ function kawase_single_filter_process(stack, kernel) {
 		}
 		surface_set_target(stack[kawase_single_filter_stack.ping]) {
 			draw_clear_alpha(#000000, 0);
-			shader_set(kawasesinglefilter) {
-				shader_set_uniform_f(kerneluniform, kernel[iteration + 1]);
+			shader_set(kawasesinglefiltershader) {
+				shader_set_uniform_f(distancesuniform, distances[iteration + 1]);
 				shader_set_uniform_f(texeluniform, 1 / width, 1 / height);
 				draw_surface(stack[kawase_single_filter_stack.pong], 0, 0);
 				shader_reset();	
@@ -78,6 +76,12 @@ function kawase_single_filter_process(stack, kernel) {
 	gpu_set_tex_filter(false);
 }
 
+/**
+ * draws the final contents with the fancy new blur stuff
+ * @param {array<Id.Surface>} stack the stack of surfaces uses for all this
+ * @param {real} x the x position to draw the final contents
+ * @param {real} y the y position to draw the final contents
+ */
 function kawase_single_filter_render(stack, x, y) {
 	var contents = stack[kawase_single_filter_stack.contents];
 	var width = surface_get_width(contents);
@@ -87,6 +91,10 @@ function kawase_single_filter_render(stack, x, y) {
 	gpu_set_tex_filter(false);
 }
 
+/**
+ * cleans the array stack from vram
+ * @param {array<Id.Surface>} stack the stack of surfaces uses for all this
+ */
 function kawase_single_filter_clean(stack) {
 	if (surface_exists(stack[0]) == true) {
 		surface_free(stack[0]);	

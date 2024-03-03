@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "kawasedualfilterup",
   "parent": {
-    "name": "kawase filters",
-    "path": "kawase filters.yyp",
+    "name": "dual filter",
+    "path": "folders/dual filter.yy",
   },
   "type": 1,
 }

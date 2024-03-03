@@ -1,14 +1,16 @@
 {
-  "FolderOrderSettings": [],
+  "FolderOrderSettings": [
+    {"name":"all the other stuff","order":4,"path":"folders/all the other stuff.yy",},
+    {"name":"dual filter","order":1,"path":"folders/dual filter.yy",},
+    {"name":"single filter","order":3,"path":"folders/single filter.yy",},
+  ],
   "ResourceOrderSettings": [
-    {"name":"newsingle","order":9,"path":"objects/newsingle/newsingle.yy",},
-    {"name":"backend","order":7,"path":"scripts/backend/backend.yy",},
-    {"name":"background","order":8,"path":"sprites/background/background.yy",},
-    {"name":"singlefiltercontrol","order":2,"path":"objects/singlefiltercontrol/singlefiltercontrol.yy",},
-    {"name":"dualfiltercontrol","order":4,"path":"objects/dualfiltercontrol/dualfiltercontrol.yy",},
-    {"name":"kawasedualfilterup","order":5,"path":"shaders/kawasedualfilterup/kawasedualfilterup.yy",},
-    {"name":"kawasesinglefilter","order":3,"path":"shaders/kawasesinglefilter/kawasesinglefilter.yy",},
-    {"name":"kawasedualfilterdown","order":6,"path":"shaders/kawasedualfilterdown/kawasedualfilterdown.yy",},
-    {"name":"stage","order":1,"path":"rooms/stage/stage.yy",},
+    {"name":"kawasesinglefilterlibary","order":1,"path":"scripts/kawasesinglefilterlibary/kawasesinglefilterlibary.yy",},
+    {"name":"background","order":2,"path":"sprites/background/background.yy",},
+    {"name":"kawasedualfilterup","order":3,"path":"shaders/kawasedualfilterup/kawasedualfilterup.yy",},
+    {"name":"kawasesinglefiltershader","order":2,"path":"shaders/kawasesinglefiltershader/kawasesinglefiltershader.yy",},
+    {"name":"font","order":1,"path":"fonts/font/font.yy",},
+    {"name":"kawasedualfilterdown","order":2,"path":"shaders/kawasedualfilterdown/kawasedualfilterdown.yy",},
+    {"name":"kawasedualfilterlibary","order":1,"path":"scripts/kawasedualfilterlibary/kawasedualfilterlibary.yy",},
   ],
 }

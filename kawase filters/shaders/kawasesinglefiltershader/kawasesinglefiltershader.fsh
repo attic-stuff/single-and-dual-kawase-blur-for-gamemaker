@@ -2,12 +2,12 @@
 varying vec2 vv_texturecoordinate;
 varying vec4 vv_vertexcolor;
 
-uniform float kernel;
+uniform float distances;
 uniform vec2 texelsize;
 
 void main() {
 
-	vec2 offset = (0.5 + kernel) * texelsize;
+	vec2 offset = (0.5 + distances) * texelsize;
 
 	vec3 color = vec3(0.0);
 	
