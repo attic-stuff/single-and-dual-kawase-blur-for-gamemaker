@@ -5,9 +5,11 @@ varying vec4 vv_vertexcolor;
 uniform float distances;
 uniform vec2 texelsize;
 
+const float multiplier = 0.3; //a true kawase blur uses 0.5, but 0.3 looks better thanks xor.
+
 void main() {
 
-	vec2 offset = (0.5 + distances) * texelsize;
+	vec2 offset = (multiplier + distances) * texelsize;
 
 	vec3 color = vec3(0.0);
 	

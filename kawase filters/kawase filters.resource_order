@@ -2,7 +2,8 @@
   "FolderOrderSettings": [
     {"name":"all the other stuff","order":4,"path":"folders/all the other stuff.yy",},
     {"name":"dual filter","order":1,"path":"folders/dual filter.yy",},
-    {"name":"single filter","order":3,"path":"folders/single filter.yy",},
+    {"name":"single filter","order":2,"path":"folders/single filter.yy",},
+    {"name":"example of dual filtering the app surface","order":3,"path":"folders/example of dual filtering the app surface.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"kawasesinglefilterlibary","order":1,"path":"scripts/kawasesinglefilterlibary/kawasesinglefilterlibary.yy",},
@@ -10,6 +11,7 @@
     {"name":"kawasedualfilterup","order":3,"path":"shaders/kawasedualfilterup/kawasedualfilterup.yy",},
     {"name":"kawasesinglefiltershader","order":2,"path":"shaders/kawasesinglefiltershader/kawasesinglefiltershader.yy",},
     {"name":"font","order":1,"path":"fonts/font/font.yy",},
+    {"name":"appsurfacedualfilterexample","order":1,"path":"objects/appsurfacedualfilterexample/appsurfacedualfilterexample.yy",},
     {"name":"kawasedualfilterdown","order":2,"path":"shaders/kawasedualfilterdown/kawasedualfilterdown.yy",},
     {"name":"kawasedualfilterlibary","order":1,"path":"scripts/kawasedualfilterlibary/kawasedualfilterlibary.yy",},
   ],

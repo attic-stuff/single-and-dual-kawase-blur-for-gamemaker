@@ -19,3 +19,37 @@ the regular kawase blur is done as a classic ping pong: it applies the blur to e
 
 # which should i use?
 while this repo contains an example of and code for both single and dual filter blurs, you will generally want to use the dual filter in pretty much all occasions as it is the most efficient one to work with. trying to find good, constant smudge distances for the single filter is also kind of a pain and will give you different results based on the size of whats being blurred and all that.
+
+# how do i use the dual filter?
+there is an example yyp included here for you to take a look at, that sort of walks you through setting it up. everything works as pinging and ponging. to set it up you will need to initialize a stack of surfaces using the function ``kawase_dual_filter_create_stack(n)`` where n is how many passes you wish the blur to make. this doesnt need to be an even number, the function is smart enough to know how to do an equal number of upscales as downscales, hooray! the 0th index of the array should hold the contents you wish to blur; this can be the app surface, another surface, or you can make it into a surface and draw stuff to it directly like the example. you will need to begin the process with ``kawase_dual_filter_begin``, process the blur with ``kawase_dual_filter_process``, and draw it with ``kawase_dual_filter_render``. don't forget to call the clean function to remove surfaces from vram before you end up with a leak. there is an example of how to blur the entire application surface included as well, you just need to change the home room to that room.
+
+# dual filter functions
+| kawase_dual_filter_create_stack(passes)                      |
+| :----------------------------------------------------------- |
+| this is a helper function to create a stack with the correct number of indices for a dual filter kawase blur. it returns an array. index 0 is what your content will be on. |
+| **passes**: the number of passes this blur will make         |
+
+| kawase_dual_filter_begin(stack, [spread])                    |
+| :----------------------------------------------------------- |
+| begins the blurring process by doing the first downsample    |
+| **stack**: the stack of surfaces to be blurred.<br />**spread**: the smudge factor of the blur. for a tasteful blur just leave this as 1, for a nightmare crank it up to like 4 or 5. |
+
+| kawase_dual_filter_process(stack, [spread])                  |
+| :----------------------------------------------------------- |
+| does the rest of the blurring                                |
+| **stack**: the stack of surfaces to be blurred.<br />**spread**: the smudge factor of the blur. for a tasteful blur just leave this as 1, for a nightmare crank it up to like 4 or 5. |
+
+| kawase_dual_filter_render(stack, x, y)                       |
+| :----------------------------------------------------------- |
+| draws the final, blurred surface at the same resolution as the content surface. |
+| **stack**: the stack of surfaces to be blurred.<br />**x**: the x position to draw the final surface.<br />**y**: the y position to draw the final surface. |
+
+| kawase_dual_filter_clean(stack)                              |
+| :----------------------------------------------------------- |
+| surfaces are dynamic and we want them gone before they memory leak all over the place. |
+| **stack**: the stack of surfaces to be yeeted.               |
+
+
+
+# license
+go nuts just leave me out of it. you can use the gml and the shader code in any project you want, without attribution, but please try to link to kawase and bjørge. you may not use the artwork for font in this project for anything ever.

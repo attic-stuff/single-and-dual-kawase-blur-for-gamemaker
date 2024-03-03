@@ -5,10 +5,12 @@ varying vec4 vv_vertexcolor;
 uniform float spread;
 uniform vec2 texelsize;
 
+const float multiplier = 0.3; //a true kawase blur uses 0.5, but 0.3 looks better thanks xor.
+
 void main() {
 	vec3 color = vec3(0.0);
 	
-	vec2 halftexel = texelsize * 0.5;
+	vec2 halftexel = texelsize * multiplier;
 	
 	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate).rgb * 4.0;
 	color = color + texture2D(gm_BaseTexture, vv_texturecoordinate + halftexel * spread).rgb;
