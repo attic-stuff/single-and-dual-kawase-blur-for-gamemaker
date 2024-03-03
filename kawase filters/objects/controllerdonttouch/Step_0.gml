@@ -23,11 +23,11 @@ if (instance_exists(kawasedualfilterexample) == true) {
 
 
 if (instance_exists(kawasesinglefilterexample) == true) {
-	for (var iteration = 1; iteration < 7; iteration++)  {
-		if (keyboard_check_pressed(ord($"{iteration}")) ==  true) {
-			kawasesinglefilterexample.distances = kawasesinglefilterexample.distancelist[iteration - 1];
+	for (var iteration = 0, styles = array_length(kawasesinglefilterexample.distancelist); iteration < styles; iteration++)  {
+		if (keyboard_check_pressed(ord($"{iteration + 1}")) ==  true) {
+			kawasesinglefilterexample.distanceindex = iteration;
 		}
-	}
+	}	
 	if (keyboard_check_pressed(vk_backspace) == true) {
 		instance_destroy(kawasesinglefilterexample);
 		instance_create_depth(x, y, 0, kawasesinglefilterexample);			

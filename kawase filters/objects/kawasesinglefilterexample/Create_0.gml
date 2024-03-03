@@ -16,10 +16,9 @@ distancelist = [
 	[ 0, 0, 0, 0 ],
 	[ 0, 0, 0, 0, 0, 0 ],
 	[ 0, 1 ],
-	[ 0, 0, 1, 1, 2 ],
+	[ 0, 0, 1, 1, 2, 2 ],
 	[ 1, 2, 3, 4, 4, 5, 6, 7 ]
 ]
-
 distancenames = [
 	"small standard",
 	"medium standard",
@@ -28,5 +27,4 @@ distancenames = [
 	"medium smudge",
 	"large smudge"
 ]
-
-distances = distancelist[0];
+distanceindex = 0;

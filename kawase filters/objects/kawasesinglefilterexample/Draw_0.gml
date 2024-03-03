@@ -25,7 +25,7 @@ kawase_single_filter_begin(stack);
 	kawase_single_filter_process flips and flops between ping and pong
 	to do the goodtimes
 */
-kawase_single_filter_process(stack, distances);
+kawase_single_filter_process(stack, distancelist[distanceindex]);
 
 /*
 	kawase_single_filter_render draws the final contents, but you can also
